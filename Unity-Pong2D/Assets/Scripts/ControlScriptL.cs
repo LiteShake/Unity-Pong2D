@@ -6,18 +6,20 @@ public class ControlScriptL : MonoBehaviour
 {
     [SerializeField] Camera mainCamera;
 
-    // Update is called once per frame
-    void Update()
+    Rigidbody2D playerBody;
+    float speed = 22f;
+
+    private void Start()
     {
-        float move_y = mainCamera.ScreenToWorldPoint(Input.mousePosition).y ;
+        
+        playerBody = GetComponent<Rigidbody2D>();
+    }
 
-        // float move_y = Input.mousePosition.y;
-        // Debug.Log(move_y);
-
-        Vector2 trans = transform.position;
-        trans.y = move_y;
-
-        if( Mathf.Abs(trans.y) <= 4.2 )
-            transform.position = trans;
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        Vector2 accn = Input.acceleration;
+        
+        playerBody.velocity = new Vector2(0f, -accn.x * speed);   
     }
 }

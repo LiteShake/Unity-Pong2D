@@ -23,7 +23,7 @@ public class BallMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !firstMoveDone)
+        if (!firstMoveDone)
         {
             // Debug.Log("Space!");
             direction = new Vector3( 1.732f , 1, 0 );
